@@ -4,4 +4,6 @@
 	echo $title;
 
 	 $this->ViewData["title"] = "asdasdasd";
+
+	 echo $this->RenderBody();
 ?>
