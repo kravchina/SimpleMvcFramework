@@ -31,7 +31,6 @@
 	require_once( COREPATH . "Core.php");
 
 
-
 	$core = new Core();
 
 	$core->Run();
