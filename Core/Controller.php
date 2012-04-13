@@ -13,8 +13,9 @@
 
 		// Имя метода, который выполниться в RunAction
 		private $runMethodName;
-
-		private function __construct($actionName)
+                
+                
+                private function __construct($actionName)
 		{
 			// Проверка, существует ли в создаваемом классе указанный Action
 			if(!method_exists($this, $actionName . "Action")){
@@ -25,7 +26,7 @@
 
 			$this->runMethodName = $actionName . "Action";
 		}
-
+                
 		public function RunAction( $args = array()){
 			
 			$this->Init();
@@ -37,6 +38,28 @@
 			$result->AssingViewData($this->ViewData);
 			
 			return $result;
+		}
+
+		/*
+		* Служить для загрузки классов модели
+		* В качестве параметра необходимо передать имя класса модели из папки "Model"
+		* Загруженный класс будет доступен в контроллере по $this->$modelName
+		*
+		*/
+		protected function LoadModel($modelName){
+
+			if(!file_exists(APPPATH . "Model/" . $modelName . ".php")){
+				throw new Exception("Model file $modelName not found!", 1);				
+			}
+
+			require(APPPATH . "Model/" . $modelName . ".php");
+
+			if(!class_exists($modelName)){
+				throw new Exception("Model $modelName not loaded!", 1);				
+			}
+
+			$this->$modelName = new $modelName();
+
 		}
 
 		/*

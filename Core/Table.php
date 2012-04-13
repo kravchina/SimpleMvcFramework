@@ -13,6 +13,9 @@
 		{
 			# code...
 		}
+
+
+		public function Where()
 	}
 
 

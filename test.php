@@ -1,15 +1,20 @@
 <?php
 
 	
-	$test[] = "1";
-	$test[] = "2";
-	$test[] = "3";
-	$test[] = "4";
+	/**
+	* 
+	*/
+	class A
+	{
+		
+		function __construct($name)
+		{
+			$this->$name = "Test";
+		}
+	}
 
-	unset($test[2]);
+	$a = "A";
+	$a = new $a("tt");
 
-	echo "<pre>";
-
-	print_r($test);
-
+	echo $a->tt;
 ?>

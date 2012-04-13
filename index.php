@@ -10,7 +10,7 @@
 	*/
 	define('APP_MODE', 'debug');
 
-
+        
 	$systempath = str_replace("\\", "/", dirname(__FILE__)) . "/" ;
 
 	define('ROOTPATH', 	$systempath);
