@@ -9,13 +9,16 @@
 		
 		private function __construct()
 		{
-
-			$this->text = "Create";
+			
 		}
 
 
+		public function RawQuery($query){
+
+		}
+
 		public function Query($query){
-			
+
 		}
 
 

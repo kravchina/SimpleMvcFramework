@@ -1,20 +1,24 @@
 <?php
 
 	
-	/**
-	* 
-	*/
-	class A
-	{
-		
-		function __construct($name)
-		{
-			$this->$name = "Test";
-		}
+	$connId = mysql_connect("localhost", "root", "");
+
+	mysql_select_db("test", $connId);
+
+	mysql_query("set names 'utf8'", $connId);
+
+
+	for ($i=0; $i < 40000; $i++) { 
+		mysql_query("INSERT INTO `rel`(`user_id`, `group_id`) VALUES ('$i', '1')", $connId);
+	
 	}
 
-	$a = "A";
-	$a = new $a("tt");
+	echo mysql_error();
 
-	echo $a->tt;
+	for ($i=0; $i < 100000; $i++) { 
+		mysql_query("INSERT INTO `rel`(`user_id`, `group_id`) VALUES ('$i', '2')", $connId);
+		
+	}
+
+	echo mysql_error();
 ?>
